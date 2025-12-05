@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="04; url=/mainpage.html">
+  <title>k&k entreprises..</title>
+  <style>
+    /* Reset page styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      overflow: hidden;
+      background: radial-gradient(circle at bottom, #001122, #000);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 90vh;
+      margin: 0;
+    }
+    /* Container for the bubbles */
+    .bubbles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+    }
+
+    /* Individual bubble styles */
+    .bubble {
+      position: absolute;
+      bottom: -100px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      animation: rise 15s infinite ease-in;
+    }
+
+    /* Bubble rising animation */
+    @keyframes rise {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-120vh) scale(1.3);
+        opacity: 0;
+      }
+    }
+
+    /* Add a bunch of bubbles with different sizes, speeds, and positions */
+    .bubble:nth-child(1) {
+      left: 10%;
+      width: 40px;
+      height: 40px;
+      animation-duration: 18s;
+      animation-delay: 0s;
+    }
+
+    .bubble:nth-child(2) {
+      left: 20%;
+      width: 20px;
+      height: 20px;
+      animation-duration: 12s;
+      animation-delay: 2s;
+    }
+
+    .bubble:nth-child(3) {
+      left: 35%;
+      width: 60px;
+      height: 60px;
+      animation-duration: 20s;
+      animation-delay: 4s;
+    }
+
+    .bubble:nth-child(4) {
+      left: 50%;
+      width: 25px;
+      height: 25px;
+      animation-duration: 14s;
+      animation-delay: 6s;
+    }
+
+    .bubble:nth-child(5) {
+      left: 65%;
+      width: 30px;
+      height: 30px;
+      animation-duration: 16s;
+      animation-delay: 8s;
+    }
+
+    .bubble:nth-child(6) {
+      left: 80%;
+      width: 50px;
+      height: 50px;
+      animation-duration: 22s;
+      animation-delay: 10s;
+    }
+
+    .bubble:nth-child(7) {
+      left: 90%;
+      width: 15px;
+      height: 15px;
+      animation-duration: 10s;
+      animation-delay: 12s;
+    }
+
+    /* titleposition */
+    .title {
+      text-align: center;
+      font-weight: bolder;
+      display: inline-block;
+      padding: 70px 0 0 50px;
+      animation: slideIn 1.5s infinite;
+      animation-timing-function: ease-in-out;
+    }
+
+    @keyframes slideIn {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-40px);
+      }
+    }
+
+    .maintitle {
+      font-size: 100px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      animation: fontcolor 10s infinite alternate;
+    }
+
+    @keyframes fontcolor {
+      0% {
+        background-position: 0% 25%;
+        color: green;
+      }
+
+      25% {
+        background-position: 50% 25%;
+        color: rgb(83, 65, 65);
+      }
+
+      50% {
+        background-position: 75% 50%;
+        color: rgb(177, 54, 54);
+      }
+
+      75% {
+        background-position: 100% 75%;
+        color: rgb(136, 77, 192);
+      }
+
+      100% {
+        background-position: 0% 100%;
+        color: aqua;
+      }
+    }
+
+    .subtitle {
+      font-size: 150px;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      animation: subtltcolor 10s infinite alternate;
+    }
+
+    @keyframes subtltcolor {
+      0% {
+        background-position: 0% 25%;
+        color: rgba(29, 199, 29, 0.379);
+      }
+
+      25% {
+        background-position: 50% 25%;
+        color: rgba(181, 44, 44, 0.352);
+      }
+
+      50% {
+        background-position: 75% 50%;
+        color: rgba(192, 51, 51, 0.497);
+      }
+
+      75% {
+        background-position: 100% 75%;
+        color: rgba(136, 77, 192, 0.24);
+      }
+
+      100% {
+        background-position: 0% 100%;
+        color: rgba(0, 255, 255, 0.338);
+      }
+    }
+
+    /* buttons social media */
+
+    /* buttons */
+    .icon-btn {
+      position: relative;
+      width: 50px;
+      height: 50px;
+      border: none;
+      background: none;
+      padding: 0;
+      cursor: pointer;
+      outline: none;
+      transition: transform 0.15s ease;
+      top: 50px;
+    }
+
+    /* On hover or click — move down slightly */
+    .icon-btn:hover {
+      transform: translateY(9px);
+    }
+
+    /* Both icons overlap perfectly */
+    .icon-btn .icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: opacity 0.2s ease;
+    }
+
+    /* Show the colored one by default */
+    .icon-btn .colored {
+      opacity: 1;
+    }
+
+    /* Hide the dark one by default */
+    .icon-btn .dark {
+      opacity: 0;
+    }
+
+    /* On hover — fade between the two */
+    .icon-btn:hover .colored {
+      opacity: 0;
+    }
+
+    .icon-btn:hover .dark {
+      opacity: 1;
+    }
+
+    /* lets begin animation */
+    /* Hidden initially */
+    .intoaction {
+      color: rgb(57, 200, 39);
+      font-size: 60px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      opacity: 0;
+      animation: showText 1s ease-in forwards;
+      animation-delay: 2s;
+      padding-top: 20px;
+      /* Wait 2 seconds before showing */
+    }
+
+    /* Keyframes for fade-in effect */
+    @keyframes showText {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="bubbles">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+
+  <div class="title">
+    <!-- animationtitle -->
+    <div class="maintitle">K & K</div>
+    <div class="subtitle">Entreprises..</div>
+
+    <!--  social media options  -->
+    <button class="icon-btn" title="facebook">
+      <img src="/Marketmania/icons/socialmedia/facebook.png" alt="facebook" class="icon colored">
+      <img src="/Marketmania/icons/socialmedia/facebook (1).png" alt="facebook" class="icon dark">
+    </button>
+
+    <button class="icon-btn" title="instagram">
+      <img src="/Marketmania/icons/socialmedia/instagram.png" alt="instagram" class="icon colored">
+      <img src="/Marketmania/icons/socialmedia/instagram (1).png" alt="instagram" class="icon dark">
+    </button>
+
+    <button class="icon-btn" title="linkedin">
+      <img src="/Marketmania/icons/socialmedia/linkedin.png" alt="linkedin" class="icon colored">
+      <img src="/Marketmania/icons/socialmedia/linkedin (1).png" alt="linkedin" class="icon dark">
+    </button> <br><br> <br>
+    <div>
+      <p class="intoaction"><i>Let’s begin..</i></p>
+    </div>
+
+  </div>
+</body>
+
+</html>

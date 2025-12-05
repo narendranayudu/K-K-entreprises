@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>K&K Entreprises</title>
+     <!-- now we will add css elements to get frontend design -->
+     <style>
+        body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
+.page-section {
+  height: 100vh; /* full screen height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+}
+
+/* Different colors for each section */
+#home { background: #1abc9c; }
+#products { background: #3498db; }
+#location { background: #9b59b6; }
+#helpline { background: #e67e22; }
+#about { background: #2ecc71; }
+#feedback { background: #e74c3c; }
+
+/* Floating label that shows section name */
+#section-label {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.6);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 10px;
+  font-size: 22px;
+  display: none;
+  z-index: 999;
+}
+
+     </style>
+</head>
+
+<body>
+
+    <div id="section-label"></div>
+
+    <section id="home" class="page-section">
+        <div class="intro">
+            
+        </div>
+    </section>
+    <section id="products" class="page-section"></section>
+    <section id="location" class="page-section"></section>
+    <section id="helpline" class="page-section"></section>
+    <section id="about" class="page-section"></section>
+    <section id="feedback" class="page-section"></section>
+
+     <!-- now we will add javascript to make it functional -->
+
+    <script>
+
+// here we can use Intersection Observer API for better performance and we can mention each section name by entering the section
+
+    const label = document.getElementById('section-label');
+    const sections = document.querySelectorAll('.page-section');
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    label.innerText = entry.target.id.toUpperCase();
+                    label.style.display = "block";
+                }
+            });
+        },
+        { threshold: 0.6 } // section must be 60% visible
+    );
+
+    sections.forEach(section => observer.observe(section));
+
+    </script>
+</body>
+
+</html>
