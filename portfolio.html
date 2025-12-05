@@ -1,0 +1,406 @@
+<!--
+Single-file portfolio for Narendra Nayudu
+Instructions:
+1. Save this file as index.html and replace placeholders (YOUR_GITHUB_USERNAME, resume.pdf link, project links).
+2. To host on GitHub Pages: create a new repo (e.g., narendranayudu.github.io), push this file as index.html to the repository's main branch, then enable GitHub Pages in repo settings. Or use any static host.
+3. Replace project cards with real project descriptions, images and links.
+-->
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Narendra Nayudu — Portfolio</title>
+    <meta name="description"
+        content="Portfolio of Narendra Nayudu — MBA student | Data Analytics | Power BI | Web Development" />
+    <style>
+        :root {
+            --bg: #0f1724;
+            --card: #0b1220;
+            --muted: #98a0b3;
+            --accent: #6ee7b7;
+            --glass: rgba(255, 255, 255, 0.04);
+            --max: 1100px;
+            --radius: 14px;
+            --mono: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: var(--mono);
+            background: linear-gradient(180deg, #071025 0%, #071425 100%);
+            color: #e6eef8
+        }
+
+        .wrap {
+            max-width: var(--max);
+            margin: 28px auto;
+            padding: 28px;
+        }
+
+        .top {
+            display: flex;
+            gap: 20px;
+            align-items: center
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #0ea5a0, #3b82f6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            font-weight: 700;
+            color: #021226
+        }
+
+        .intro {
+            flex: 1
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28px
+        }
+
+        .sub {
+            color: var(--muted);
+            margin-top: 6px
+        }
+
+        .buttons {
+            margin-top: 12px;
+            display: flex;
+            gap: 8px
+        }
+
+        .btn {
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 10px 14px;
+            border-radius: 10px;
+            color: inherit;
+            text-decoration: none;
+            font-weight: 600
+        }
+
+        .btn.secondary {
+            background: transparent;
+            border: 1px dashed rgba(255, 255, 255, 0.06)
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 20px;
+            margin-top: 22px
+        }
+
+        @media (max-width:980px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            padding: 18px;
+            border-radius: var(--radius);
+            box-shadow: 0 6px 25px rgba(2, 6, 23, 0.6);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px
+        }
+
+        .section-title h2 {
+            margin: 0;
+            font-size: 18px
+        }
+
+        .muted {
+            color: var(--muted);
+            font-size: 14px
+        }
+
+        /* Skills */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px
+        }
+
+        .pill {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 8px 10px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 13px
+        }
+
+        /* Projects */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px
+        }
+
+        @media (max-width:680px) {
+            .projects {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .project {
+            padding: 12px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.03)
+        }
+
+        .project h3 {
+            margin: 0;
+            font-size: 16px
+        }
+
+        .project p {
+            margin: 6px 0 10px;
+            color: var(--muted);
+            font-size: 14px
+        }
+
+        .project .links {
+            display: flex;
+            gap: 8px
+        }
+
+        /* Sidebar */
+        .sidebar .card+.card {
+            margin-top: 16px
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0
+        }
+
+        .contact-list li {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 8px
+        }
+
+        footer {
+            margin-top: 26px;
+            color: var(--muted);
+            text-align: center;
+            font-size: 13px
+        }
+
+        /* subtle animation */
+        .avatar,
+        .card {
+            transition: transform .25s ease, box-shadow .25s ease
+        }
+
+        .avatar:hover {
+            transform: translateY(-4px)
+        }
+
+        .project:hover {
+            transform: translateY(-4px)
+        }
+
+        /* Resume badge */
+        .resume-badge {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            background: linear-gradient(90deg, #06b6d4, #8b5cf6);
+            color: #021226;
+            padding: 8px 12px;
+            border-radius: 12px;
+            font-weight: 700
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="top">
+            <div class="avatar">NN</div>
+            <div class="intro">
+                <h1>Narendra Nayudu</h1>
+                <div class="sub">MBA Student | Data Analytics · Power BI · Web Basics</div>
+                <div class="buttons">
+                    <!-- Replace hrefs: resume.pdf should be the actual link to your resume in your repo or hosting -->
+                    <a class="btn resume" href="/Narendra_resume.pdf" id="downloadResume">Download Resume</a>
+                    <a class="btn secondary" href="https://github.com/narendranayudu" target="_blank"
+                        rel="noopener">View GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <main>
+                <section class="card">
+                    <div class="section-title">
+                        <h2>About</h2>
+                    </div>
+                    <p class="muted">I am an MBA candidate at C.M.R Technical Campus (2023–2025) with a background in
+                        B.Sc and experience learning data tools and web development. I enjoy translating data into
+                        actionable insights using Excel, Power BI and building simple web experiences with
+                        HTML, CSS and JavaScript.</p>
+                </section>
+
+                <section class="card" style="margin-top:16px">
+                    <div class="section-title">
+                        <h2>Projects</h2>
+                    </div>
+                    <div class="projects">
+                        <div class="project">
+                            <h3>Power BI — Sales Dashboard</h3>
+                            <p>Interactive dashboard showcasing sales KPIs, time-series analysis, and regional
+                                breakdowns. Built using sample sales dataset.</p>
+                            <div class="links">
+                                <a class="btn" href="#" onclick="alert('Replace with project link')">View</a>
+                                <a class="btn secondary" href="#" onclick="alert('Replace with GitHub link')">Source</a>
+                            </div>
+                        </div>
+
+                        <div class="project">
+                            <h3>Portfolio Website (This site)</h3>
+                            <p>Single-file responsive portfolio created using HTML/CSS/JS. Deploy via GitHub Pages.</p>
+                            <div class="links">
+                                <a class="btn" href="#" onclick="alert('Preview on GitHub Pages')">Live</a>
+                                <a class="btn secondary" href="https://github.com/YOUR_GITHUB_USERNAME"
+                                    target="_blank">Source</a>
+                            </div>
+                        </div>
+
+                        <div class="project">
+                            <h3>SQL — Student Database Queries</h3>
+                            <p>Collection of SQL queries: joins, aggregates and filters for a college student database
+                                (marks, attendance, departments).</p>
+                            <div class="links">
+                                <a class="btn" href="#" onclick="alert('Replace with DB demo link')">Demo</a>
+                                <a class="btn secondary" href="#" onclick="alert('Replace with GitHub link')">Source</a>
+                            </div>
+                        </div>
+
+                        <div class="project">
+                            <h3>Python — Marks Analyzer</h3>
+                            <p>Simple Python scripts for calculating statistics and plotting basic charts using pandas
+                                and matplotlib.</p>
+                            <div class="links">
+                                <a class="btn" href="#" onclick="alert('Replace with notebook link')">Notebook</a>
+                                <a class="btn secondary" href="#" onclick="alert('Replace with GitHub link')">Source</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section class="card" style="margin-top:16px" id="resume">
+                    <div class="section-title">
+                        <h2>Education</h2>
+                    </div>
+                    <p><strong>M.B.A</strong> — C.M.R Technical Campus (2023–2025) (Pursuing) <br>
+                        <strong>B.Sc</strong> — Telangana University (2018–2022) — 72% <br>
+                        <strong>Intermediate</strong> — Sri chaitanya junior kalasala — 83% <br>
+                        <strong>SSC</strong> — Sacred Heart Academy — 73%
+                    </p>
+
+                    <div style="margin-top:10px" class="section-title">
+                        <h2>Certifications</h2>
+                    </div>
+                    <p class="muted">Basic IT Skills — National Skill Development Corporation (Jul–Aug 2022)</p>
+                </section>
+
+                <section class="card" style="margin-top:16px">
+                    <div class="section-title">
+                        <h2>Contact</h2>
+                    </div>
+                    <p class="muted">Feel free to reach out — I usually respond within a short time.</p>
+                    <ul class="contact-list">
+                        <li><strong>Email:</strong>&nbsp; <a
+                                href="mailto:narendranayudu7722@gmail.com">narendranayudu7722@gmail.com</a></li>
+                        <li><strong>Phone:</strong>&nbsp; +91 6302609278</li>
+                        <li><strong>Location:</strong>&nbsp; Hyderabad, Telangana, India</li>
+                    </ul>
+                </section>
+            </main>
+
+            <aside class="sidebar">
+                <div class="card">
+                    <div class="section-title">
+                        <h2>Skills</h2>
+                    </div>
+                    <div class="skills">
+                        <span class="pill">Power BI</span>
+                        <span class="pill">Excel</span>
+                        <span class="pill">SQL (Basic)</span>
+                        <span class="pill">HTML & CSS</span>
+                        <span class="pill">JavaScript (Basic)</span>
+                        <span class="pill">Python (Basic)</span>
+                        <span class="pill">MS Office</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="section-title">
+                        <h2>Languages</h2>
+                    </div>
+                    <p class="muted">English · Hindi · Telugu</p>
+                </div>
+
+                <div class="card">
+                    <div class="section-title">
+                        <h2>Quick Links</h2>
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:8px">
+                        <a class="btn" href="https://github.com/narendranayudu" target="_blank">GitHub</a>
+                        <a class="btn" href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank">LinkedIn</a>
+                        <a class="btn" href="/Narendra_resume.pdf">Resume PDF</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <footer>
+            Built with ❤️ • Resume: narendranayudu7722@gmail.com • © Narendra Nayudu
+        </footer>
+    </div>
+
+    <script>
+        // Small JS to handle 'download resume' behavior and placeholders
+        document.getElementById('downloadResume').addEventListener('click', function (e) {
+            e.preventDefault();
+            // If you host resume in same repo, set path to './resume.pdf' or a remote link
+            const resumeUrl = '/Narendra_resume.pdf';
+            // Try to open resume - replace resumeUrl with your actual hosted url
+            window.open(resumeUrl, '_blank');
+        });
+
+        // Helpful console message for next steps
+        console.log('Portfolio template loaded. To deploy: update links, upload resume.pdf and push to GitHub Pages.');
+    </script>
+</body>
+
+</html>
